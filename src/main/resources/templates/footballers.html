@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Footballers</title>
+</head>
+<body>
+<h1>Footballers</h1>
+
+<div>
+    <table>
+        <thead>
+        <td>Id</td>
+        <td>Lastname</td>
+        <td>Firstname</td>
+        <td>Salary</td>
+        <td>Birthday</td>
+        <td>Position</td>
+        </thead>
+
+        <tbody>
+        <tr th:each="footballer : ${footballers}">
+            <td th:text = "${footballer.id}" />
+            <td th:text = "${footballer.lastname}" />
+            <td th:text = "${footballer.firstname}" />
+            <td th:text = "${footballer.salary}" />
+            <td th:text = "${footballer.birthday}" />
+            <td th:text = "${footballer.position}" />
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
