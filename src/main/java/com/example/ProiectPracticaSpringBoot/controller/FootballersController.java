@@ -17,7 +17,8 @@ public class FootballersController {
     public String printHello()
     {
         return "Hello Footballers, " +
-                "to see the football players go to this path /footballers";
+                "to see the football players go to this path /footballers" +
+                "to see the teams go to this path /teams";
     }
 
     @GetMapping(value = "/footballers")
