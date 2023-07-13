@@ -1,10 +1,20 @@
 package com.example.ProiectPracticaSpringBoot.model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 @Data
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class Footballer {
 
     private int id;
@@ -14,15 +24,5 @@ public class Footballer {
     private LocalDate birthday;
     private int salary;
     private String position;
-
-    public Footballer(int id, String firstname, String lastname, LocalDate birthday, int salary, String position, int teamId) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.birthday = birthday;
-        this.salary = salary;
-        this.position = position;
-        this.teamId = teamId;
-    }
 
 }

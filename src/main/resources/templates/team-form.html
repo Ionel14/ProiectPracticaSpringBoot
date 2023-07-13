@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Form</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
+
+</head>
+<body>
+
+<div class="container-fluid ">
+
+    <form action="#" method="post" th:action="@{/submit-team}">
+        <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label " for="teamId">Team ID: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.teamId}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="name">Name: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.name}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="location">Location: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.location}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="foundationDate">Date of Foundation: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.foundationDate}" type="date">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="coach">Coach: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.coach}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="leagueName">League: </label>
+                <div>
+                    <input class="form-control" th:field="${new_team.leagueName}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <button class="btn btn-primary" type="submit">
+                    Submit
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+
+</html>

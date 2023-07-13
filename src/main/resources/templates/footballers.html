@@ -1,26 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Footballers</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<h1>Footballers</h1>
+<!--<h1>Footballers</h1>-->
 
-<div>
-    <table>
-        <thead>
-        <td>Id</td>
-        <td>Lastname</td>
-        <td>Firstname</td>
-        <td>Salary</td>
-        <td>Birthday</td>
-        <td>Position</td>
+<!--<div>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <td>Id</td>-->
+<!--        <td>Lastname</td>-->
+<!--        <td>Firstname</td>-->
+<!--        <td>Salary</td>-->
+<!--        <td>Birthday</td>-->
+<!--        <td>Position</td>-->
+<!--        </thead>-->
+
+<!--        <tbody>-->
+<!--        <tr th:each="footballer : ${footballers}">-->
+<!--            <td th:text = "${footballer.id}" />-->
+<!--            <td th:text = "${footballer.lastname}" />-->
+<!--            <td th:text = "${footballer.firstname}" />-->
+<!--            <td th:text = "${footballer.salary}" />-->
+<!--            <td th:text = "${footballer.birthday}" />-->
+<!--            <td th:text = "${footballer.position}" />-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+
+<!--<br>-->
+<!--<h1>Added Footballers List: </h1>-->
+<div class = "container-fluid  d-flex justify-content-center ">
+    <div class = "row col-lg-6  ">
+        <table class = " table table-primary table-striped table-bordered ">
+        <thead >
+        <td scope = "col">Id</td>
+        <td scope = "col">Team Id</td>
+        <td scope = "col">Lastname</td>
+        <td scope = "col">Firstname</td>
+        <td scope = "col">Salary</td>
+        <td scope = "col">Birthday</td>
+        <td scope = "col">Position</td>
         </thead>
 
         <tbody>
-        <tr th:each="footballer : ${footballers}">
+        <tr scope = "row" th:each="footballer : ${footballer_database}">
             <td th:text = "${footballer.id}" />
+            <td th:text = "${footballer.teamId}"/>
             <td th:text = "${footballer.lastname}" />
             <td th:text = "${footballer.firstname}" />
             <td th:text = "${footballer.salary}" />
@@ -30,5 +60,9 @@
         </tbody>
     </table>
 </div>
+</div>
 </body>
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+
 </html>

@@ -1,9 +1,6 @@
 package com.example.ProiectPracticaSpringBoot.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +8,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@Data
 @ToString
 public class Team {
 
@@ -36,12 +33,28 @@ public class Team {
         this.players = new ArrayList<>();
     }
 
-    public void addFootballer(Footballer new_footballer){
+    public void addFootballer(Footballer new_footballer) {
         this.players.add(new_footballer);
     }
 
-    public int getPlayersCount(){
-        return this.players.size();
+    public String getCaptainFirstName() {
+        if (captain == null) {
+            return "N/A";
+        }
+        return this.captain.getFirstname();
     }
 
+    public String getCaptainLastName() {
+        if (captain == null) {
+            return "";
+        }
+        return this.captain.getLastname();
+    }
+
+    public int getPlayersCount() {
+        if (this.players == null) {
+            return 0;
+        }
+        return this.players.size();
+    }
 }
