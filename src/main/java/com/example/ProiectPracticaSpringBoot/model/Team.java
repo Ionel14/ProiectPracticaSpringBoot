@@ -1,5 +1,6 @@
 package com.example.ProiectPracticaSpringBoot.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -10,20 +11,39 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @ToString
+
+@Entity
+@Table(name = "team")
+
 public class Team {
 
-    private int teamId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private int id;
+
     private String name;
+
+    @OneToMany(mappedBy = "team")
     private List<Footballer> players;
+
     private String location;
+
+    @Column(name = "foundation_date")
     private LocalDate foundationDate;
+
     private String coach;
+
+    @OneToOne
+    @JoinColumn(name = "captain_id")
     private Footballer captain;
+
+    @Column(name = "league_name")
     private String leagueName;
 
     /*All args constructor with empty list*/
     public Team(int teamId, String name, String location, LocalDate foundationDate, String coachName, Footballer captain, String leagueName) {
-        this.teamId = teamId;
+        this.id = teamId;
         this.name = name;
         this.location = location;
         this.foundationDate = foundationDate;
