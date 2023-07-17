@@ -2,13 +2,11 @@ package com.example.ProiectPracticaSpringBoot.controller;
 
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.repository.FootballerRepository;
+import com.example.ProiectPracticaSpringBoot.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +17,8 @@ public class FootballersController {
 
     @Autowired
     FootballerRepository footballerRepository;
+    @Autowired
+    TeamRepository teamRepository;
     private boolean once = true;
 
     @GetMapping(value = "/")
@@ -47,6 +47,7 @@ public class FootballersController {
     @GetMapping(value = "footballer-form")
     public String footballerForm(Model model) {
         model.addAttribute("new_footballer", new Footballer());
+        model.addAttribute("teams", teamRepository.findAll());
         return "footballer-form";
     }
 
@@ -54,5 +55,12 @@ public class FootballersController {
     public String submitFootballer(@ModelAttribute("new_footballer") Footballer new_footballer) {
        footballerRepository.save(new_footballer);
         return "redirect:/footballers";
+    }
+
+    @PutMapping(value = "footballer-update-form")
+    public String footballerUpdateForm(Model model, Footballer footballer) {
+        model.addAttribute("new_footballer", footballer);
+        model.addAttribute("teams", teamRepository.findAll());
+        return "footballer-form";
     }
 }

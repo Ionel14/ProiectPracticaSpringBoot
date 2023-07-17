@@ -19,7 +19,3 @@ CREATE TABLE footballer (
     FOREIGN KEY(id_team) REFERENCES team(id)
 
 );
-
-
-
-

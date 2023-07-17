@@ -56,6 +56,11 @@
             <td th:text = "${footballer.salary}" />
             <td th:text = "${footballer.birthday}" />
             <td th:text = "${footballer.position}" />
+            <td>
+                <button th:action="@{/footballer-update-form}" type="button">
+                    Edit
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>

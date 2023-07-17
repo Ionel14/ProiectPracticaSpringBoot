@@ -47,6 +47,8 @@ public class TeamsController {
     @PostMapping(value = "/submit-team")
     public String submitTeam(@ModelAttribute("new_team") Team new_team) {
         teamRepository.save(new_team);
-        return null;
+        return "redirect:/teams";
     }
+
+
 }
