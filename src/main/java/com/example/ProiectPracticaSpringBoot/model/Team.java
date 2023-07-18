@@ -2,6 +2,7 @@ package com.example.ProiectPracticaSpringBoot.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-
 @Entity
 @Table(name = "team")
 
@@ -30,6 +30,7 @@ public class Team {
     private String location;
 
     @Column(name = "foundation_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate foundationDate;
 
     private String coach;
