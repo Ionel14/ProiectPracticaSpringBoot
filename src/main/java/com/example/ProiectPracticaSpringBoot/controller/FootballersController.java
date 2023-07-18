@@ -70,9 +70,18 @@ public class FootballersController {
     @GetMapping(value = "/delete-footballer")
     public String deleteFootballer(@RequestParam("id") int footballer_id){
 
+        Footballer footballer = footballerRepository.getReferenceById(footballer_id);
         Team team_of_footballer = teamRepository.findByFootballerId(footballer_id);
         if(team_of_footballer != null){
-            team_of_footballer.setCaptain(null);
+            List<Footballer> footballerList = team_of_footballer.getPlayers();
+            footballerList.remove(footballer);
+
+            if (team_of_footballer.getCaptain() == footballer)
+            {
+                team_of_footballer.setCaptain(null);
+            }
+
+            teamRepository.save(team_of_footballer);
         }
         footballerRepository.deleteById(footballer_id);
         return "redirect:/footballers";

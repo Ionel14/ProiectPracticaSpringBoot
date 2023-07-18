@@ -6,34 +6,6 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<!--<h1>Footballers</h1>-->
-
-<!--<div>-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <td>Id</td>-->
-<!--        <td>Lastname</td>-->
-<!--        <td>Firstname</td>-->
-<!--        <td>Salary</td>-->
-<!--        <td>Birthday</td>-->
-<!--        <td>Position</td>-->
-<!--        </thead>-->
-
-<!--        <tbody>-->
-<!--        <tr th:each="footballer : ${footballers}">-->
-<!--            <td th:text = "${footballer.id}" />-->
-<!--            <td th:text = "${footballer.lastname}" />-->
-<!--            <td th:text = "${footballer.firstname}" />-->
-<!--            <td th:text = "${footballer.salary}" />-->
-<!--            <td th:text = "${footballer.birthday}" />-->
-<!--            <td th:text = "${footballer.position}" />-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
-<!--<br>-->
-<!--<h1>Added Footballers List: </h1>-->
 <div class = "container-fluid  d-flex justify-content-center ">
     <div class = "row col-lg-6  ">
         <table class = " table table-primary table-striped table-bordered ">
@@ -58,14 +30,11 @@
             <td th:text = "${footballer.birthday}" />
             <td th:text = "${footballer.position}" />
             <td>
-<!--                <button th:action="@{/footballer-update-form}" type="button">-->
-<!--                    Edit-->
-<!--                </button>-->
-<!--                <a th:href="@{/footballer-update-form(id=${footballer.id})}">-->
-<!--                    Edit-->
-<!--                </a>-->
                 <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/footballer-update-form?id=${footballer.id}'|">
                     Edit
+                </button>
+                <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/delete-footballer?id=${footballer.id}'|">
+                    Delete
                 </button>
             </td>
         </tr>
