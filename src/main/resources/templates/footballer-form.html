@@ -51,7 +51,6 @@
                         <option value = "GK">GK</option>
                     </select>
                 </div>
-
             </div>
 
             <div class="form-group row">
@@ -60,6 +59,13 @@
                     <select class="form-control" th:field="${new_footballer.team.id}" >
                         <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="captain">Captain </label>
+                <div>
+                    <input  type="checkbox" name="isCaptain" class="form-check-input"  th:checked="${isCaptain}">
                 </div>
             </div>
 

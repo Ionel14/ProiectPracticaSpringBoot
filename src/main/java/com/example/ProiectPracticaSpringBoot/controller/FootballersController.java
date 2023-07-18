@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class FootballersController {
@@ -42,13 +43,21 @@ public class FootballersController {
     @GetMapping(value = "/footballer-form")
     public String footballerForm(Model model) {
         model.addAttribute("new_footballer", new Footballer());
+        model.addAttribute("isCaptain", false);
         model.addAttribute("teams", teamRepository.findAll());
         return "footballer-form";
     }
 
     @PostMapping(value = "/submit-footballer")
-    public String submitFootballer(@ModelAttribute("new_footballer") Footballer new_footballer) {
+    public String submitFootballer(@ModelAttribute("new_footballer") Footballer new_footballer,
+                                   @RequestParam(value = "isCaptain", required = false) boolean isCaptain){
        footballerRepository.save(new_footballer);
+       if (isCaptain)
+       {
+           Optional<Team> team = teamRepository.findById(new_footballer.getTeam().getId());
+           team.get().setCaptain(new_footballer);
+           teamRepository.save(team.get());
+       }
         return "redirect:/footballers";
     }
 
