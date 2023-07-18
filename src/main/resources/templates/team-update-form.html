@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Team</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
+</head>
+<body>
+
+<div class="container-fluid ">
+
+    <form action="#" method="post" th:action="@{/team-update}">
+        <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
+
+            <input type="hidden" th:field="${team_to_be_updated.id}" />
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="name">Name: </label>
+                <div>
+                    <input class="form-control" th:field="${team_to_be_updated.name}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="location">Location: </label>
+                <div>
+                    <input class="form-control" th:field="${team_to_be_updated.location}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="foundationDate">Date of Foundation: </label>
+                <div>
+                    <input class="form-control" th:field="${team_to_be_updated.foundationDate}" type="date">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="coach">Coach: </label>
+                <div>
+                    <input class="form-control" th:field="${team_to_be_updated.coach}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="leagueName">League: </label>
+                <div>
+                    <input class="form-control" th:field="${team_to_be_updated.leagueName}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-12 col-form-label" for="captain">Captain: </label>
+                <div>
+                    <select class="form-control" th:field="${team_to_be_updated.captain}" >
+                        <option th:each="footballer : ${footballers}" th:value="${footballer.id}" th:text="${footballer.firstname + '&nbsp;' + footballer.lastname}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <button class="btn btn-primary" type="submit">
+                    Submit
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+</body>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+</html>

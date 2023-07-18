@@ -2,41 +2,43 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Footballer Form</title>
+    <title>Update Footballer</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
 
 <div class="container-fluid ">
 
-    <form action="#" method="post" th:action="@{/submit-footballer}">
+    <form action="#" method="post" th:action="@{/footballer-update}">
         <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
+
+            <input type="hidden" th:field="${footballer_to_be_updated.id}" />
 
             <div class="form-group row">
                 <label class="col-12 col-form-label " for="firstname">First Name: </label>
                 <div>
-                    <input class="form-control" th:field="${new_footballer.firstname}" type="text">
+                    <input class="form-control" th:field="${footballer_to_be_updated.firstname}" type="text">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="lastname">Last Name: </label>
                 <div>
-                    <input class="form-control" th:field="${new_footballer.lastname}" type="text">
+                    <input class="form-control" th:field="${footballer_to_be_updated.lastname}" type="text">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="salary">Salary: </label>
                 <div>
-                    <input class="form-control" th:field="${new_footballer.salary}" type="number">
+                    <input class="form-control" th:field="${footballer_to_be_updated.salary}" type="number">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="birthday">Birth Day: </label>
                 <div>
-                    <input class="form-control" th:field="${new_footballer.birthday}" type="date">
+                    <input class="form-control" th:field="${footballer_to_be_updated.birthday}" type="date">
                 </div>
             </div>
 
@@ -44,7 +46,7 @@
                 <label class="col-12 col-form-label" for="position">Position: </label>
 
                 <div>
-                    <select class="form-control" th:field="${new_footballer.position}" >
+                    <select class="form-control" th:field="${footballer_to_be_updated.position}" >
                         <option value = "FW">FW</option>
                         <option value = "MF">MF</option>
                         <option value = "DF">DF</option>
@@ -57,7 +59,7 @@
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="team">Team: </label>
                 <div>
-                    <select class="form-control" th:field="${new_footballer.team.id}" >
+                    <select class="form-control" th:field="${footballer_to_be_updated.team.id}" >
                         <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
                     </select>
                 </div>

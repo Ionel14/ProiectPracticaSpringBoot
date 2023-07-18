@@ -7,13 +7,12 @@ import com.example.ProiectPracticaSpringBoot.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class TeamsController {
@@ -50,5 +49,30 @@ public class TeamsController {
         return "redirect:/teams";
     }
 
+    @GetMapping(value = "/delete-team")
+    public String deleteTeam(@RequestParam("id") int team_id){
+        List<Footballer> footballers_of_certain_team = footballerRepository.findByTeamId(team_id);
+        for(Footballer f : footballers_of_certain_team){
+            f.setTeam(null);
+            footballerRepository.save(f);
+        }
+        teamRepository.deleteById(team_id);
 
+        return "redirect:/teams";
+    }
+
+    @PostMapping(value = "/team-update")
+    public String footballerUpdate(@ModelAttribute("updated_team") Team updated_team) {
+        teamRepository.save(updated_team);
+        return "redirect:/teams";
+    }
+
+    @GetMapping(value = "/team-update-form")
+    public String teamUpdateForm(Model model, @RequestParam("id") int team_id){
+
+        model.addAttribute("team_to_be_updated", teamRepository.findById(team_id).get());
+        model.addAttribute("footballers", footballerRepository.findByTeamId(team_id));
+
+        return "team-update-form";
+    }
 }

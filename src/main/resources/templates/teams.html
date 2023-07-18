@@ -20,6 +20,7 @@
             <td>Coach</td>
             <td>Captain</td>
             <td>League</td>
+            <td></td>
 
             </thead>
             <tbody>
@@ -32,6 +33,11 @@
                 <td th:text="${team.coach}"></td>
                 <td th:text="${team.getCaptainFirstName + ' ' + team.getCaptainLastName}"></td>
                 <td th:text="${team.leagueName}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
+                        Edit
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>

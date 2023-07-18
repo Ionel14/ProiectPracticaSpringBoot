@@ -45,6 +45,7 @@
         <td scope = "col">Salary</td>
         <td scope = "col">Birthday</td>
         <td scope = "col">Position</td>
+        <td></td>
         </thead>
 
         <tbody>
@@ -57,7 +58,13 @@
             <td th:text = "${footballer.birthday}" />
             <td th:text = "${footballer.position}" />
             <td>
-                <button th:action="@{/footballer-update-form}" type="button">
+<!--                <button th:action="@{/footballer-update-form}" type="button">-->
+<!--                    Edit-->
+<!--                </button>-->
+<!--                <a th:href="@{/footballer-update-form(id=${footballer.id})}">-->
+<!--                    Edit-->
+<!--                </a>-->
+                <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/footballer-update-form?id=${footballer.id}'|">
                     Edit
                 </button>
             </td>
