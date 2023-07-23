@@ -1,5 +1,6 @@
 package com.example.ProiectPracticaSpringBoot.dto;
 
+import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,16 +11,16 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FootballerFormDto {
+public class TeamUpdateFormDto {
+
     private int id;
-    private String firstname;
-    private String lastname;
+    private String name;
+    private String location;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthday;
+    private LocalDate foundationDate;
 
-    private int salary;
-    private String position;
-    private int teamId;
-    private boolean isCaptain;
+    private String coach;
+    private String leagueName;
+    private Footballer captain;
 }

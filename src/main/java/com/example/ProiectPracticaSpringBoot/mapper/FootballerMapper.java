@@ -43,6 +43,7 @@ public class FootballerMapper {
                 .team(Team.builder()
                         .id(footballer.getTeamId())
                         .build())
+                .id(footballer.getId())
                 .build();
     }
 

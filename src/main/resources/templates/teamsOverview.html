@@ -27,11 +27,11 @@
             <tr scope="row" th:each="team : ${teams}">
                 <td th:text="${team.id}"></td>
                 <td th:text="${team.name}"></td>
-                <td th:text="${team.getPlayersCount}">
+                <td th:text="${team.playerCount}">
                 <td th:text="${team.location}"></td>
                 <td th:text="${team.foundationDate}"></td>
                 <td th:text="${team.coach}"></td>
-                <td th:text="${team.getCaptainFirstName + ' ' + team.getCaptainLastName}"></td>
+                <td th:text="${team.captainName}"></td>
                 <td th:text="${team.leagueName}"></td>
                 <td>
                     <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
@@ -44,34 +44,6 @@
             </tr>
             </tbody>
         </table>
-
-    </div>
-</div>
-
-<br>
-
-<div th:each="team : ${teams}">
-    <div class=" container-fluid ">
-        <div class="row col-lg-6  ">
-
-            <h2 th:text="${team.name}"></h2>
-
-            <table class="table table-info table-striped table-bordered ">
-                <thead>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Position</td>
-                </thead>
-
-                <tbody>
-                <tr th:each="player : ${team.players}">
-                    <td th:text="${player.firstname}"></td>
-                    <td th:text="${player.lastname}"></td>
-                    <td th:text="${player.position}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 </div>
 

@@ -56,7 +56,7 @@
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="team">Team: </label>
                 <div>
-                    <select class="form-control" th:field="${new_footballer.team.id}" >
+                    <select class="form-control" th:field="${new_footballer.teamId}" >
                         <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
                     </select>
                 </div>

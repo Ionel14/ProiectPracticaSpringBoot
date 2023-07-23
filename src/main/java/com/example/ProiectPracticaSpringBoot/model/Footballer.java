@@ -31,10 +31,10 @@ public class Footballer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
-    @Column(name="salary")
+    @Column(name = "salary")
     private int salary;
 
-    @Column(name= "field_position")
+    @Column(name = "field_position")
     private String position;
 
     @ManyToOne

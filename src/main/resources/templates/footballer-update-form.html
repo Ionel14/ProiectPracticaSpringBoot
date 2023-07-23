@@ -12,7 +12,7 @@
     <form action="#" method="post" th:action="@{/footballer-update}">
         <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
 
-            <input type="hidden" th:field="${footballer_to_be_updated.id}" />
+            <input type="hidden" th:field="${footballer_to_be_updated.id}"/>
 
             <div class="form-group row">
                 <label class="col-12 col-form-label " for="firstname">First Name: </label>
@@ -46,11 +46,11 @@
                 <label class="col-12 col-form-label" for="position">Position: </label>
 
                 <div>
-                    <select class="form-control" th:field="${footballer_to_be_updated.position}" >
-                        <option value = "FW">FW</option>
-                        <option value = "MF">MF</option>
-                        <option value = "DF">DF</option>
-                        <option value = "GK">GK</option>
+                    <select class="form-control" th:field="${footballer_to_be_updated.position}">
+                        <option value="FW">FW</option>
+                        <option value="MF">MF</option>
+                        <option value="DF">DF</option>
+                        <option value="GK">GK</option>
                     </select>
                 </div>
 
@@ -59,7 +59,7 @@
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="team">Team: </label>
                 <div>
-                    <select class="form-control" th:field="${footballer_to_be_updated.team.id}" >
+                    <select class="form-control" th:field="${footballer_to_be_updated.teamId}">
                         <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
                     </select>
                 </div>

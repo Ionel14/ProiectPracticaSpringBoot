@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Integer> {
 
-    @Query(value="SELECT team.* FROM footballer INNER JOIN team ON footballer.id_team = team.id WHERE  footballer.id = :footballer_id"
+    @Query(value = "SELECT team.* FROM footballer INNER JOIN team ON footballer.id_team = team.id WHERE  footballer.id = :footballer_id"
             , nativeQuery = true)
     Team findByFootballerId(int footballer_id);
 }

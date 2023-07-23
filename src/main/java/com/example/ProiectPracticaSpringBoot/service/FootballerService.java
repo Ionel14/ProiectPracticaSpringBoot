@@ -32,7 +32,7 @@ public class FootballerService {
     {
         Footballer footballer = footballerMapper.mapToFootballer(footballerFormDto);
         footballerRepository.save(footballer);
-        if (footballerFormDto.getIsCaptain())
+        if (footballerFormDto.isCaptain())
         {
             Optional<Team> team = teamRepository.findById(footballerFormDto.getTeamId());
             team.get().setCaptain(footballer);
@@ -61,5 +61,9 @@ public class FootballerService {
             teamRepository.save(team_of_footballer);
         }
         footballerRepository.deleteById(footballer_id);
+    }
+
+    public List<Footballer> getAllFootballersByTeamId(int team_id){
+       return footballerRepository.findByTeamId(team_id);
     }
 }
