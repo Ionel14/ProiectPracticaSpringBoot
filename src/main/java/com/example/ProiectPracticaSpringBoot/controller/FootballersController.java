@@ -4,9 +4,13 @@ import com.example.ProiectPracticaSpringBoot.dto.FootballerFormDto;
 
 import com.example.ProiectPracticaSpringBoot.service.FootballerService;
 import com.example.ProiectPracticaSpringBoot.service.TeamService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -17,6 +21,13 @@ public class FootballersController {
 
     @Autowired
     TeamService teamService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder)
+    {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class ,stringTrimmerEditor);
+    }
 
     @GetMapping(value = "/")
     public String homePage() {
@@ -33,14 +44,26 @@ public class FootballersController {
     public String footballerForm(Model model) {
         model.addAttribute("new_footballer", new FootballerFormDto());
         //model.addAttribute("teams", teamRepository.findAll());
+        model.addAttribute("isCaptain", false);
         model.addAttribute("teams", teamService.getTeamsOfFootballerForm());
 
         return "footballer-form";
     }
 
     @PostMapping(value = "/submit-footballer")
-    public String submitFootballer(@ModelAttribute("new_footballer") FootballerFormDto new_footballer){
-       footballerService.saveFootballer(new_footballer);
+    public String submitFootballer(@ModelAttribute("new_footballer") @Valid FootballerFormDto new_footballer,
+                                   BindingResult bindingResult,
+                                   @RequestParam(value = "isCaptain", required = false) boolean isCaptain,
+                                   Model model){
+
+        if (bindingResult.hasErrors())
+        {
+            model.addAttribute("new_footballer", new_footballer);
+            model.addAttribute("isCaptain", isCaptain);
+            model.addAttribute("teams", teamService.getTeamsOfFootballerForm());
+            return "footballer-form";
+        }
+        footballerService.saveFootballer(new_footballer, isCaptain);
         return "redirect:/footballers";
     }
 
@@ -55,7 +78,7 @@ public class FootballersController {
 
     @PostMapping(value = "/footballer-update")
     public String footballerUpdate(@ModelAttribute("updated_footballer") FootballerFormDto updated_footballer) {
-        footballerService.saveFootballer(updated_footballer);
+        footballerService.saveFootballer(updated_footballer, false);
         return "redirect:/footballers";
     }
 

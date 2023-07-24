@@ -11,12 +11,12 @@
 
     <form action="#" method="post" th:action="@{/submit-footballer}">
         <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
-
             <div class="form-group row">
                 <label class="col-12 col-form-label " for="firstname">First Name: </label>
                 <div>
                     <input class="form-control" th:field="${new_footballer.firstname}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('new_footballer.firstname')}" th:errors="*{new_footballer.firstname}"></span>
             </div>
 
             <div class="form-group row">
@@ -24,6 +24,7 @@
                 <div>
                     <input class="form-control" th:field="${new_footballer.lastname}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('new_footballer.lastname')}" th:errors="*{new_footballer.lastname}"></span>
             </div>
 
             <div class="form-group row">
@@ -31,6 +32,7 @@
                 <div>
                     <input class="form-control" th:field="${new_footballer.salary}" type="number">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('new_footballer.salary')}" th:errors="*{new_footballer.salary}"></span>
             </div>
 
             <div class="form-group row">
@@ -65,7 +67,7 @@
             <div class="form-group row">
                 <label class="col-12 col-form-label" for="captain">Captain </label>
                 <div>
-                    <input  type="checkbox" name="isCaptain" class="form-check-input"  th:checked="${new_footballer.isCaptain}">
+                    <input  type="checkbox" name="isCaptain" class="form-check-input"  th:checked="${isCaptain}">
                 </div>
             </div>
 
