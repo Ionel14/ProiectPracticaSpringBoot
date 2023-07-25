@@ -77,7 +77,14 @@ public class FootballersController {
     }
 
     @PostMapping(value = "/footballer-update")
-    public String footballerUpdate(@ModelAttribute("updated_footballer") FootballerFormDto updated_footballer) {
+    public String footballerUpdate(@ModelAttribute("footballer_to_be_updated") @Valid FootballerFormDto updated_footballer,
+                                   BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors())
+        {
+            model.addAttribute("footballer_to_be_updated", updated_footballer);
+            model.addAttribute("teams", teamService.getTeamsOfFootballerForm());
+            return "footballer-update-form";
+        }
         footballerService.saveFootballer(updated_footballer, false);
         return "redirect:/footballers";
     }

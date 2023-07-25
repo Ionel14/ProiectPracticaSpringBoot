@@ -14,11 +14,12 @@
 
             <input type="hidden" th:field="${footballer_to_be_updated.id}"/>
 
-            <div class="form-group row">
+            <div class="form-group ro   w">
                 <label class="col-12 col-form-label " for="firstname">First Name: </label>
                 <div>
                     <input class="form-control" th:field="${footballer_to_be_updated.firstname}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('footballer_to_be_updated.firstname')}" th:errors="*{footballer_to_be_updated.firstname}"></span>
             </div>
 
             <div class="form-group row">
@@ -26,6 +27,7 @@
                 <div>
                     <input class="form-control" th:field="${footballer_to_be_updated.lastname}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('footballer_to_be_updated.lastname')}" th:errors="*{footballer_to_be_updated.lastname}"></span>
             </div>
 
             <div class="form-group row">
@@ -33,6 +35,7 @@
                 <div>
                     <input class="form-control" th:field="${footballer_to_be_updated.salary}" type="number">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('footballer_to_be_updated.salary')}" th:errors="*{footballer_to_be_updated.salary}"></span>
             </div>
 
             <div class="form-group row">
