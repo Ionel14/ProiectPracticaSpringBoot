@@ -1,6 +1,7 @@
 package com.example.ProiectPracticaSpringBoot.mapper;
 
 import com.example.ProiectPracticaSpringBoot.dto.FootballerFormDto;
+import com.example.ProiectPracticaSpringBoot.dto.FootballerOfTeamDto;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerOverviewDto;
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.model.Team;
@@ -60,4 +61,19 @@ public class FootballerMapper {
                 .build();
     }
 
+    private FootballerOfTeamDto mapToFootballerOfTeamDto(Footballer footballer)
+    {
+        return FootballerOfTeamDto.builder()
+                .firstname(footballer.getFirstname())
+                .lastname(footballer.getLastname())
+                .id(footballer.getId())
+                .build();
+    }
+
+    public List<FootballerOfTeamDto> getFootballerOfTeamDtoList(List<Footballer> footballers)
+    {
+        return footballers.stream()
+                .map(this::mapToFootballerOfTeamDto)
+                .collect(Collectors.toList());
+    }
 }

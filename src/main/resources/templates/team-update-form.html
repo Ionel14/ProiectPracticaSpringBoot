@@ -19,6 +19,7 @@
                 <div>
                     <input class="form-control" th:field="${team_to_be_updated.name}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('team_to_be_updated.name')}" th:errors="*{team_to_be_updated.name}"></span>
             </div>
 
             <div class="form-group row">
@@ -26,6 +27,7 @@
                 <div>
                     <input class="form-control" th:field="${team_to_be_updated.location}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('team_to_be_updated.location')}" th:errors="*{team_to_be_updated.location}"></span>
             </div>
 
             <div class="form-group row">
@@ -40,6 +42,7 @@
                 <div>
                     <input class="form-control" th:field="${team_to_be_updated.coach}" type="text">
                 </div>
+                <span th:class="text-danger" th:if="${#fields.hasErrors('team_to_be_updated.coach')}" th:errors="*{team_to_be_updated.coach}"></span>
             </div>
 
             <div class="form-group row">

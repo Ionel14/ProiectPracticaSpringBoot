@@ -69,4 +69,16 @@ public class TeamMapper {
                 .name(team.getName())
                 .build();
     }
+
+    public TeamUpdateFormDto mapToTeamUpdateFormDto(Team team){
+        return TeamUpdateFormDto.builder()
+                .coach(team.getCoach())
+                .foundationDate(team.getFoundationDate())
+                .leagueName(team.getLeagueName())
+                .location(team.getLocation())
+                .name(team.getName())
+                .id(team.getId())
+                .captain(team.getCaptain())
+                .build();
+    }
 }

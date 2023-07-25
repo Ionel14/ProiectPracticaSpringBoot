@@ -53,5 +53,9 @@ public class TeamService {
         return teamRepository.getReferenceById(team_id);
     }
 
+    public TeamUpdateFormDto getTeamUpdateFormDtoById(int team_id){
+       return teamMapper.mapToTeamUpdateFormDto(this.getTeamById(team_id));
+    }
+
 
 }
