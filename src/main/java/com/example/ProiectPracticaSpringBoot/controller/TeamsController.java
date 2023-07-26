@@ -65,7 +65,7 @@ public class TeamsController {
     }
 
     @PostMapping(value = "/team-update")
-    public String teamUpdate(@ModelAttribute("updated_team") @Valid TeamUpdateFormDto team_to_be_updated,
+    public String teamUpdate(@ModelAttribute("team_to_be_updated") @Valid TeamUpdateFormDto team_to_be_updated,
                                    BindingResult bindingResult,
                                    Model model) {
 
