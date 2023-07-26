@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/dashboard}">
 <head>
     <meta charset="UTF-8">
     <title>Teams</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<h1>Teams</h1>
-
-<div class="container-fluid ">
+<div class="container-fluid " layout:fragment="content">
     <div class="row col-lg-6  ">
         <table class=" table table-primary table-striped table-bordered ">
             <thead>

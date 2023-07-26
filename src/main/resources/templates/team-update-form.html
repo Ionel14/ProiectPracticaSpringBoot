@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/dashboard}">
 <head>
     <meta charset="UTF-8">
     <title>Update Team</title>
@@ -9,7 +11,7 @@
 
 <div class="container-fluid ">
 
-    <form action="#" method="post" th:action="@{/team-update}">
+    <form action="#" method="post" th:action="@{/team-update}" layout:fragment="content">
         <div class="row  mx-auto col-10 col-md-8 col-lg-6 ">
 
             <input type="hidden" th:field="${team_to_be_updated.id}" />
