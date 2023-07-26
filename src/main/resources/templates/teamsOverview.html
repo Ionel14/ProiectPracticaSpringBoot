@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/dashboard}">
+
 <head>
     <meta charset="UTF-8">
     <title>Teams</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<div class="container-fluid " layout:fragment="content">
+<div class="container-fluid d-flex justify-content-center"  layout:fragment="content">
     <div class="row col-lg-6  ">
-        <table class=" table table-primary table-striped table-bordered ">
+        <table class=" table table-primary table-striped table-bordered">
             <thead>
             <td>Team ID</td>
             <td>Team Name</td>
@@ -20,8 +21,9 @@
             <td>Coach</td>
             <td>Captain</td>
             <td>League</td>
-            <td></td>
-
+            <td></td> <!--Edit-->
+            <td></td> <!--Delete-->
+            <td></td> <!--View-->
             </thead>
             <tbody>
             <tr scope="row" th:each="team : ${teams}">
@@ -34,11 +36,21 @@
                 <td th:text="${team.captainName}"></td>
                 <td th:text="${team.leagueName}"></td>
                 <td>
-                    <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
+                    <button type="button" class="btn btn-primary"
+                            th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
                         Edit
                     </button>
-                    <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/delete-team?id=${team.id}'|">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            th:onclick="|window.location.href='/delete-team?id=${team.id}'|">
                         Delete
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            th:onclick="|window.location.href='/view-team?id=${team.id}'|">
+                        View
                     </button>
                 </td>
             </tr>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/dashboard}">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${team.name}"></title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
+</head>
+<body>
+
+<div class="container-fluid  d-flex justify-content-center" layout:fragment="content">
+    <div class="row col-lg-6  ">
+
+        <table class=" table table-primary table-striped table-bordered ">
+            <thead th:text = "${team.name}"></thead>
+            <thead>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Position</td>
+
+            </thead>
+            <tbody>
+            <tr scope="row" th:each="footballer : ${footballers}">
+                <td th:text="${footballer.firstname}"></td>
+                <td th:text="${footballer.lastname}"></td>
+                <td th:text="${footballer.position}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
+</html>

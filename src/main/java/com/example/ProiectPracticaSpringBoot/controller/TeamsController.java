@@ -16,9 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.List;
-
 @Controller
 public class TeamsController {
 
@@ -91,6 +88,14 @@ public class TeamsController {
     public String deleteTeam(@RequestParam("id") int team_id) {
         teamService.deleteTeam(team_id);
         return "redirect:/teamsOverview";
+    }
+
+    @GetMapping(value = "/view-team")
+    public String viewTeam(Model model,
+                           @RequestParam("id") int team_id){
+        model.addAttribute("team", teamService.getTeamViewDto(team_id));
+        model.addAttribute("footballers", footballerService.teamViewFootballers(team_id));
+        return "team-view";
     }
 }
 

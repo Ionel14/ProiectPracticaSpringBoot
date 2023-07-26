@@ -3,6 +3,7 @@ package com.example.ProiectPracticaSpringBoot.service;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerFormDto;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerOfTeamDto;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerOverviewDto;
+import com.example.ProiectPracticaSpringBoot.dto.TeamViewFootballerDto;
 import com.example.ProiectPracticaSpringBoot.mapper.FootballerMapper;
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.model.Team;
@@ -70,5 +71,9 @@ public class FootballerService {
 
     public List<FootballerOfTeamDto> getAllFootballerOfTeamDtoList(int team_id){
         return footballerMapper.getFootballerOfTeamDtoList(this.getAllFootballersByTeamId(team_id));
+    }
+
+    public List<TeamViewFootballerDto> teamViewFootballers(int team_id){
+        return footballerMapper.getTeamViewDtoList(this.getAllFootballersByTeamId(team_id));
     }
 }

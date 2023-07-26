@@ -1,9 +1,6 @@
 package com.example.ProiectPracticaSpringBoot.service;
 
-import com.example.ProiectPracticaSpringBoot.dto.TeamFormDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamOfFootballerDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamOverviewDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamUpdateFormDto;
+import com.example.ProiectPracticaSpringBoot.dto.*;
 import com.example.ProiectPracticaSpringBoot.mapper.TeamMapper;
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.model.Team;
@@ -57,5 +54,8 @@ public class TeamService {
        return teamMapper.mapToTeamUpdateFormDto(this.getTeamById(team_id));
     }
 
+    public TeamViewDto getTeamViewDto(int team_id){
+        return teamMapper.mapToTeamViewDto(this.getTeamById(team_id));
+    }
 
 }

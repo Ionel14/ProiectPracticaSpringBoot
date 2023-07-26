@@ -1,9 +1,6 @@
 package com.example.ProiectPracticaSpringBoot.mapper;
 
-import com.example.ProiectPracticaSpringBoot.dto.TeamFormDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamOfFootballerDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamOverviewDto;
-import com.example.ProiectPracticaSpringBoot.dto.TeamUpdateFormDto;
+import com.example.ProiectPracticaSpringBoot.dto.*;
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.model.Team;
 import org.springframework.stereotype.Component;
@@ -81,4 +78,13 @@ public class TeamMapper {
                 .captain(team.getCaptain())
                 .build();
     }
+
+
+    public TeamViewDto mapToTeamViewDto(Team team){
+        return TeamViewDto.builder()
+                .id(team.getId())
+                .name(team.getName())
+                .build();
+    }
+
 }

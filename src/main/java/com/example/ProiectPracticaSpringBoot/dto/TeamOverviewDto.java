@@ -2,12 +2,12 @@ package com.example.ProiectPracticaSpringBoot.dto;
 import lombok.*;
 import java.time.LocalDate;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class TeamOverviewDto {
 
     private int id;

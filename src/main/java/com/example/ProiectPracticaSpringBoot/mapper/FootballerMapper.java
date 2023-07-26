@@ -3,6 +3,7 @@ package com.example.ProiectPracticaSpringBoot.mapper;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerFormDto;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerOfTeamDto;
 import com.example.ProiectPracticaSpringBoot.dto.FootballerOverviewDto;
+import com.example.ProiectPracticaSpringBoot.dto.TeamViewFootballerDto;
 import com.example.ProiectPracticaSpringBoot.model.Footballer;
 import com.example.ProiectPracticaSpringBoot.model.Team;
 import org.springframework.stereotype.Component;
@@ -76,4 +77,21 @@ public class FootballerMapper {
                 .map(this::mapToFootballerOfTeamDto)
                 .collect(Collectors.toList());
     }
+
+    public TeamViewFootballerDto mapToTeamViewDto(Footballer footballer){
+        return TeamViewFootballerDto.builder()
+                .teamId(footballer.getTeam().getId())
+                .firstname(footballer.getFirstname())
+                .lastname(footballer.getLastname())
+                .position(footballer.getPosition())
+                .build();
+    }
+
+    public List<TeamViewFootballerDto> getTeamViewDtoList(List<Footballer> footballers){
+        return footballers.stream()
+                .map(this::mapToTeamViewDto)
+                .collect(Collectors.toList());
+    }
+
+
 }
