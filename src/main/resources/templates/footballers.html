@@ -14,15 +14,15 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" >
+            <table class="table table-bordered" id="dataTable">
         <thead >
-        <td scope = "col">Lastname</td>
-        <td scope = "col">Firstname</td>
-        <td scope = "col">Salary</td>
-        <td scope = "col">Birthday</td>
-        <td scope = "col">Position</td>
-        <td scope = "col">Team</td>
-        <td scope = "col">Actions</td>
+        <td>Lastname</td>
+        <td>Firstname</td>
+        <td>Salary</td>
+        <td>Birthday</td>
+        <td>Position</td>
+        <td>Team</td>
+        <td]>Actions</td>
         </thead>
 
         <tbody>
@@ -37,7 +37,7 @@
                 <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/footballer-update-form?id=${footballer.id}'|">
                     Edit
                 </button>
-                <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/delete-footballer?id=${footballer.id}'|">
+                <button type="button" class="btn btn-danger " th:onclick="|window.location.href='/delete-footballer?id=${footballer.id}'|">
                     Delete
                 </button>
             </td>
