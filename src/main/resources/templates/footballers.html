@@ -8,11 +8,14 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<div class = "container-fluid  d-flex justify-content-center " layout:fragment="content">
-    <div class = "row col-lg-6  ">
-        <table class = " table table-primary table-striped table-bordered ">
+<div class="card shadow mb-4" layout:fragment="content">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Footballers</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" >
         <thead >
-        <td scope = "col">Id</td>
         <td scope = "col">Lastname</td>
         <td scope = "col">Firstname</td>
         <td scope = "col">Salary</td>
@@ -24,8 +27,6 @@
 
         <tbody>
         <tr scope = "row" th:each="footballer : ${footballer_database}">
-            <td th:text = "${footballer.id}" />
-<!--            <td th:text = "${footballer.teamId}"/>-->
             <td th:text = "${footballer.lastname}" />
             <td th:text = "${footballer.firstname}" />
             <td th:text = "${footballer.salary}" />
@@ -42,8 +43,9 @@
             </td>
         </tr>
         </tbody>
-    </table>
-</div>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 

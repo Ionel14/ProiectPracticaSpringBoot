@@ -9,56 +9,54 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
 </head>
 <body>
-<div class="container-fluid d-flex justify-content-center"  layout:fragment="content">
-    <div class="row col-lg-6  ">
-        <table class=" table table-primary table-striped table-bordered">
-            <thead>
-            <td>Team ID</td>
-            <td>Team Name</td>
-            <td>Players</td>
-            <td>Location</td>
-            <td>Date of Foundation</td>
-            <td>Coach</td>
-            <td>Captain</td>
-            <td>League</td>
-            <td></td> <!--Edit-->
-            <td></td> <!--Delete-->
-            <td></td> <!--View-->
-            </thead>
-            <tbody>
-            <tr scope="row" th:each="team : ${teams}">
-                <td th:text="${team.id}"></td>
-                <td th:text="${team.name}"></td>
-                <td th:text="${team.playerCount}">
-                <td th:text="${team.location}"></td>
-                <td th:text="${team.foundationDate}"></td>
-                <td th:text="${team.coach}"></td>
-                <td th:text="${team.captainName}"></td>
-                <td th:text="${team.leagueName}"></td>
-                <td>
-                    <button type="button" class="btn btn-primary"
-                            th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
-                        Edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary"
-                            th:onclick="|window.location.href='/delete-team?id=${team.id}'|">
-                        Delete
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary"
-                            th:onclick="|window.location.href='/view-team?id=${team.id}'|">
-                        View
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div class="card shadow mb-4" layout:fragment="content">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Teams</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" >
+                <thead>
+                    <td>Team Name</td>
+                    <td>Players</td>
+                    <td>Location</td>
+                    <td>Date of Foundation</td>
+                    <td>Coach</td>
+                    <td>Captain</td>
+                    <td>League</td>
+                    <td>Actions</td>
+                </thead>
+                <tbody>
+                <tr scope="row" th:each="team : ${teams}">
+                    <td th:text="${team.name}"></td>
+                    <td th:text="${team.playerCount}">
+                    <td th:text="${team.location}"></td>
+                    <td th:text="${team.foundationDate}"></td>
+                    <td th:text="${team.coach}"></td>
+                    <td th:text="${team.captainName}"></td>
+                    <td th:text="${team.leagueName}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary"
+                                th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
+                            Edit
+                        </button>
+
+                        <button type="button" class="btn btn-primary"
+                                th:onclick="|window.location.href='/delete-team?id=${team.id}'|">
+                            Delete
+                        </button>
+
+                        <button type="button" class="btn btn-primary"
+                                th:onclick="|window.location.href='/view-team?id=${team.id}'|">
+                            View
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 </body>
 
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"/>
