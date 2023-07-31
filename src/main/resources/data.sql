@@ -16,6 +16,14 @@ VALUES (2, 'Sergio', 'Busquets', '1988-7-16', 42000, 'MF');
 INSERT INTO footballer (id_team, firstname, lastname, birthday, salary, field_position)
 VALUES (2, 'Frenkie', 'De Jong', '1997-5-12', 37000, 'MF');
 
+INSERT INTO T_ROLE (id, name)
+VALUES (1, 'ADMIN');
+
+INSERT INTO T_ROLE(id, name)
+VALUES(2,'USER');
+
+INSERT INTO T_USER (id,firstname, lastname, email, password)
+VALUES (100, 'Ionel', 'Andrei', 'practicaibm2023@yahoo.com', '$2a$10$uGfMQ7.1vl9z4LaMiF8RxuQufWfx9.EHOT8D5VwJ5ahTtP0J.z0GO');
 
 
 

@@ -10,6 +10,7 @@ import com.example.ProiectPracticaSpringBoot.service.TeamService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class TeamsController {
+public class TeamsController extends  BaseController {
 
     @Autowired
     TeamRepository teamRepository;
@@ -37,8 +38,10 @@ public class TeamsController {
     }
 
     @GetMapping(value = "/teamsOverview")
-    public String teamsOverview(Model model) {
+    public String teamsOverview(Model model, Authentication auth) {
         model.addAttribute("teams",  teamService.getTeamsOverview());
+        auth.getPrincipal();
+        addUserToModel(model, auth);
         return "teamsOverview";
     }
 

@@ -21,11 +21,11 @@
 </head>
 <body>
 <div id="app" class="d-flex flex-nowrap">
-    <span th:replace="fragments/sidebar :: sidebar"></span>
+    <span th:replace="~{fragments/sidebar :: sidebar}"></span>
     <div id="main">
-        <span th:replace="fragments/header :: header"></span>
+        <span th:replace="~{fragments/header :: header}"></span>
         <div class="main-content container-fluid" layout:fragment="content"></div>
-        <span th:replace="fragments/footer :: footer"></span>
+        <span th:replace="~{fragments/footer :: footer}"></span>
 
     </div>
 

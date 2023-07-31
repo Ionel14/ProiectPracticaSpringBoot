@@ -14,7 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class FootballersController {
+public class FootballersController  extends BaseController{
 
     @Autowired
     FootballerService footballerService;
@@ -29,7 +29,7 @@ public class FootballersController {
         webDataBinder.registerCustomEditor(String.class ,stringTrimmerEditor);
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/home")
     public String homePage() {
         return "index";
     }
