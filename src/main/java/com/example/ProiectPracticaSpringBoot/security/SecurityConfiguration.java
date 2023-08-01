@@ -27,14 +27,15 @@ public class SecurityConfiguration{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-                http.authorizeHttpRequests((requests) -> requests
+        http.csrf().disable()
+                .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/bootstrap/**").permitAll()
                         .requestMatchers(toH2Console()).permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/home").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/teamsOverview").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/view-team").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/team-form").hasAnyRole("ADMIN")
                         .requestMatchers("/submit-form").hasAnyRole("ADMIN")
@@ -47,7 +48,6 @@ public class SecurityConfiguration{
                         .requestMatchers("/footballer-update-form/**").hasAnyRole("ADMIN")
                         .requestMatchers("/footballer-update").hasAnyRole("ADMIN")
                         .requestMatchers("/delete-footballer/**").hasAnyRole("ADMIN")
-                        .requestMatchers("/access-denied").permitAll()
                         .anyRequest().authenticated()
                 )
                 .headers(headers -> headers.frameOptions().disable())

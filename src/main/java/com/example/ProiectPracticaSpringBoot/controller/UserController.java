@@ -47,7 +47,7 @@ public class UserController {
             return "/register";
         }
 
-
+        userDto.setRole("USER");
         userService.register(userDto);
         return "redirect:/register?success";
     }
