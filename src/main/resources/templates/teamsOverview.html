@@ -36,12 +36,12 @@
                     <td th:text="${team.captainName}"></td>
                     <td th:text="${team.leagueName}"></td>
                     <td>
-                        <button type="button" class="btn btn-primary"
+                        <button th:if="${isAdmin}" type="button" class="btn btn-primary"
                                 th:onclick="|window.location.href='/team-update-form?id=${team.id}'|">
                             Edit
                         </button>
 
-                        <button type="button" class="btn btn-danger"
+                        <button th:if="${isAdmin}" type="button" class="btn btn-danger"
                                 th:onclick="|window.location.href='/delete-team?id=${team.id}'|">
                             Delete
                         </button>

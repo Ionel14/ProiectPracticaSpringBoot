@@ -46,7 +46,8 @@ public class TeamsController extends  BaseController {
     }
 
     @GetMapping(value = "/team-form")
-    public String teamForm(Model model) {
+    public String teamForm(Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         model.addAttribute("new_team", new TeamFormDto());
         return "team-form";
     }
@@ -54,7 +55,8 @@ public class TeamsController extends  BaseController {
     @PostMapping(value = "/submit-team")
     public String submitTeam(@ModelAttribute("new_team")  @Valid TeamFormDto new_team,
                              BindingResult bindingResult,
-                             Model model) {
+                             Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("new_footballer", new_team);
@@ -67,8 +69,8 @@ public class TeamsController extends  BaseController {
     @PostMapping(value = "/team-update")
     public String teamUpdate(@ModelAttribute("team_to_be_updated") @Valid TeamUpdateFormDto team_to_be_updated,
                                    BindingResult bindingResult,
-                                   Model model) {
-
+                                   Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         if (bindingResult.hasErrors()) {
             model.addAttribute("team_to_be_updated", team_to_be_updated);
             model.addAttribute("footballers", footballerService.getAllFootballerOfTeamDtoList(team_to_be_updated.getId()));
@@ -79,7 +81,8 @@ public class TeamsController extends  BaseController {
     }
 
     @GetMapping(value = "/team-update-form")
-    public String teamUpdateForm(Model model, @RequestParam("id") int team_id) {
+    public String teamUpdateForm(@RequestParam("id") int team_id, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
 
         model.addAttribute("team_to_be_updated", teamService.getTeamUpdateFormDtoById(team_id));
         model.addAttribute("footballers", footballerService.getAllFootballerOfTeamDtoList(team_id));
@@ -88,14 +91,15 @@ public class TeamsController extends  BaseController {
     }
 
     @GetMapping(value = "/delete-team")
-    public String deleteTeam(@RequestParam("id") int team_id) {
+    public String deleteTeam(@RequestParam("id") int team_id, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         teamService.deleteTeam(team_id);
         return "redirect:/teamsOverview";
     }
 
     @GetMapping(value = "/view-team")
-    public String viewTeam(Model model,
-                           @RequestParam("id") int team_id){
+    public String viewTeam(@RequestParam("id") int team_id, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         model.addAttribute("team", teamService.getTeamViewDto(team_id));
         model.addAttribute("footballers", footballerService.teamViewFootballers(team_id));
         return "team-view";

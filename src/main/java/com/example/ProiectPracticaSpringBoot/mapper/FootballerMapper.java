@@ -51,15 +51,19 @@ public class FootballerMapper {
 
     public FootballerFormDto mapToFootballerFormDto(Footballer footballer)
     {
-        return FootballerFormDto.builder()
+        FootballerFormDto footballerFormDto = FootballerFormDto.builder()
                 .id(footballer.getId())
                 .firstname(footballer.getFirstname())
                 .lastname(footballer.getLastname())
                 .salary(footballer.getSalary())
                 .position(footballer.getPosition())
                 .birthday(footballer.getBirthday())
-                .teamId(footballer.getTeam().getId())
                 .build();
+
+        if(footballer.getTeam() != null) {
+            footballerFormDto.setTeamId(footballer.getTeam().getId());
+        }
+        return footballerFormDto;
     }
 
     private FootballerOfTeamDto mapToFootballerOfTeamDto(Footballer footballer)

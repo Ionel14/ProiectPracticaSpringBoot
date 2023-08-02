@@ -7,6 +7,7 @@ import com.example.ProiectPracticaSpringBoot.service.TeamService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,18 +31,21 @@ public class FootballersController  extends BaseController{
     }
 
     @GetMapping(value = "/home")
-    public String home() {
+    public String home(Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         return "index";
     }
 
     @GetMapping(value = "/footballers")
-    public String footballersTable(Model model) {
+    public String footballersTable(Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         model.addAttribute("footballer_database", footballerService.getFootballersOverview());
         return "footballers";
     }
 
     @GetMapping(value = "/footballer-form")
-    public String footballerForm(Model model) {
+    public String footballerForm(Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         model.addAttribute("new_footballer", new FootballerFormDto());
         //model.addAttribute("teams", teamRepository.findAll());
         model.addAttribute("isCaptain", false);
@@ -54,8 +58,8 @@ public class FootballersController  extends BaseController{
     public String submitFootballer(@ModelAttribute("new_footballer") @Valid FootballerFormDto new_footballer,
                                    BindingResult bindingResult,
                                    @RequestParam(value = "isCaptain", required = false) boolean isCaptain,
-                                   Model model){
-
+                                   Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         if (bindingResult.hasErrors())
         {
             model.addAttribute("new_footballer", new_footballer);
@@ -68,7 +72,8 @@ public class FootballersController  extends BaseController{
     }
 
     @GetMapping(value = "/footballer-update-form")
-    public String footballerUpdateForm(Model model, @RequestParam("id") int footballer_id) {
+    public String footballerUpdateForm(@RequestParam("id") int footballer_id, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
 
         model.addAttribute("footballer_to_be_updated", footballerService.getFootballerById(footballer_id));
         model.addAttribute("teams", teamService.getTeamsOfFootballerForm());
@@ -78,7 +83,8 @@ public class FootballersController  extends BaseController{
 
     @PostMapping(value = "/footballer-update")
     public String footballerUpdate(@ModelAttribute("footballer_to_be_updated") @Valid FootballerFormDto updated_footballer,
-                                   BindingResult bindingResult, Model model) {
+                                   BindingResult bindingResult, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
         if (bindingResult.hasErrors())
         {
             model.addAttribute("footballer_to_be_updated", updated_footballer);
@@ -90,7 +96,8 @@ public class FootballersController  extends BaseController{
     }
 
     @GetMapping(value = "/delete-footballer")
-    public String deleteFootballer(@RequestParam("id") int footballer_id) {
+    public String deleteFootballer(@RequestParam("id") int footballer_id, Model model, Authentication authentication) {
+        addUserToModel(model, authentication);
 
         footballerService.deleteFootballer(footballer_id);
         return "redirect:/footballers";

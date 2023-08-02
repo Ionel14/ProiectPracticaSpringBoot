@@ -22,7 +22,7 @@
         <td>Birthday</td>
         <td>Position</td>
         <td>Team</td>
-        <td]>Actions</td>
+        <td th:if="${isAdmin}">Actions</td>
         </thead>
 
         <tbody>
@@ -33,11 +33,11 @@
             <td th:text = "${footballer.birthday}" />
             <td th:text = "${footballer.position}" />
             <td th:text = "${footballer.teamName}" />
-            <td>
+            <td th:if="${isAdmin}">
                 <button type="button" class="btn btn-primary" th:onclick="|window.location.href='/footballer-update-form?id=${footballer.id}'|">
                     Edit
                 </button>
-                <button type="button" class="btn btn-danger " th:onclick="|window.location.href='/delete-footballer?id=${footballer.id}'|">
+                <button type="button" class="btn btn-danger" th:onclick="|window.location.href='/delete-footballer?id=${footballer.id}'|">
                     Delete
                 </button>
             </td>
