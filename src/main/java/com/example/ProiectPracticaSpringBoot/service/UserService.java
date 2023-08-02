@@ -35,4 +35,9 @@ public class UserService {
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public boolean existUsers()
+    {
+        return userRepository.count() == 0;
+    }
 }

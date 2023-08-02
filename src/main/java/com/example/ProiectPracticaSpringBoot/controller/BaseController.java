@@ -11,6 +11,6 @@ public class BaseController {
                 .toList();
 
         model.addAttribute("userName", authentication.getName());
-        model.addAttribute("isAdmin", roles.contains("ADMIN"));
+        model.addAttribute("isAdmin", roles.contains("ROLE_ADMIN"));
     }
 }

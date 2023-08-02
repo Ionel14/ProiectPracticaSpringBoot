@@ -17,9 +17,6 @@ package com.example.ProiectPracticaSpringBoot.security;
 @EnableWebSecurity
 public class SecurityConfiguration{
 
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-
     @Bean
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -30,9 +27,11 @@ public class SecurityConfiguration{
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/bootstrap/**").permitAll()
+                        .requestMatchers("/vendor/**").permitAll()
                         .requestMatchers(toH2Console()).permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
+                        .requestMatchers("/login?logout").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/home").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/teamsOverview").hasAnyRole("USER", "ADMIN")

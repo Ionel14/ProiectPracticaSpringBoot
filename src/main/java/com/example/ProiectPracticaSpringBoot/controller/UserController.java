@@ -19,13 +19,26 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
+
     @Autowired
     UserService userService;
 
     @RequestMapping("/login")
     public String loginForm(){
+        if (userService.existUsers())
+        {
+            UserDto userDto = UserDto.builder()
+                    .firstname("admin")
+                    .lastname("admin")
+                    .role("ROLE_ADMIN")
+                    .email("admin@gmail.com")
+                    .password("admin")
+                    .build();
+            userService.register(userDto);
+        }
         return "login";
     }
+
 
     @GetMapping("/register")
     public String registerForm(Model model){
@@ -47,7 +60,7 @@ public class UserController {
             return "/register";
         }
 
-        userDto.setRole("USER");
+        userDto.setRole("ROLE_USER");
         userService.register(userDto);
         return "redirect:/register?success";
     }

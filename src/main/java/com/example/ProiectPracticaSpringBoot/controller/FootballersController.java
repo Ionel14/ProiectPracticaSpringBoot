@@ -30,7 +30,7 @@ public class FootballersController  extends BaseController{
     }
 
     @GetMapping(value = "/home")
-    public String homePage() {
+    public String home() {
         return "index";
     }
 
