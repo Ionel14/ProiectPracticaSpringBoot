@@ -67,9 +67,11 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-12 col-form-label" for="captain">Captain </label>
-                <div>
-                    <input  type="checkbox" name="isCaptain" class="form-check-input"  th:checked="${isCaptain}">
+                <div class="form-check form-switch px-3">
+                    <label class="form-check-label" for="captain">
+                        Captain
+                    </label>
+                    <input class="form-check-input mx-3" type="checkbox" name="isCaptain" th:checked="${isCaptain}">
                 </div>
             </div>
 

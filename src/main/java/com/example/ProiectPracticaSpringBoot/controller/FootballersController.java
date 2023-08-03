@@ -30,7 +30,7 @@ public class FootballersController  extends BaseController{
         webDataBinder.registerCustomEditor(String.class ,stringTrimmerEditor);
     }
 
-    @GetMapping(value = "/home")
+    @GetMapping(value = {"/", "/home"} )
     public String home(Model model, Authentication authentication) {
         addUserToModel(model, authentication);
         return "index";
